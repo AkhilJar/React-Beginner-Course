@@ -5,7 +5,7 @@ const Content = () => {
   const [items, setItems] = useState([
     {
       id: 1,
-      checked: true,
+      checked: false,
       item: "One half pound bag of Cocoa Covered Almonds Unsalted",
     },
     {
@@ -21,14 +21,18 @@ const Content = () => {
   ]);
 
   const handleCheck = (id) => {
+    //create new items array by changing the checked status for the id that was
+    //checked
     const listItems = items.map((item) =>
       item.id === id ? { ...item, checked: !item.checked } : item,
     );
     setItems(listItems);
+    //save to local storage in shopping list
     localStorage.setItem("shoppinglist", JSON.stringify(listItems));
   };
 
   const handleDelete = (id) => {
+    //create new array that satisfies condition
     const listItems = items.filter((item) => item.id !== id);
     setItems(listItems);
     localStorage.setItem("shoppinglist", JSON.stringify(listItems));
@@ -36,6 +40,9 @@ const Content = () => {
 
   /*
     Key notes - 
+    - use map function to return a JSX element for each item
+    - each react list item needs a key 
+
     */
   return (
     <main>
@@ -45,6 +52,7 @@ const Content = () => {
             <li className="item" key={item.id}>
               <input
                 type="checkbox"
+                //runs every time input's value is changed
                 onChange={() => handleCheck(item.id)}
                 checked={item.checked}
               />
@@ -54,6 +62,7 @@ const Content = () => {
               >
                 {item.item}
               </label>
+              {/* Trash can icon instead of delete button */}
               <FaTrashAlt
                 onClick={() => handleDelete(item.id)}
                 role="button"
