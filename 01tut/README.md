@@ -1,3 +1,8 @@
+This tutorial is being followed from the YT tutorial:
+https://www.youtube.com/playlist?list=PL0Zuz27SZ-6PrE9srvEn8nbhOOyxnWXfp
+
+Refer back to his github and write down important code here
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
